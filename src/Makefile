@@ -24,7 +24,7 @@ obj-m := lime.o
 lime-objs := tcp.o disk.o main.o
 
 KVER ?= $(shell uname -r)
-KSRC := /lib/modules/$(KVER)/build
+KSRC ?= /lib/modules/$(KVER)/build
 
 PWD := $(shell pwd)
 
