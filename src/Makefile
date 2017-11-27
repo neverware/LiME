@@ -24,6 +24,7 @@ obj-m := lime.o
 lime-objs := tcp.o disk.o main.o
 
 KVER ?= $(shell uname -r)
+KSRC := /lib/modules/$(KVER)/build
 
 PWD := $(shell pwd)
 
@@ -40,7 +41,7 @@ debug:
 	mv lime.ko lime-$(KVER).ko
 
 modules:    main.c disk.c tcp.c lime.h
-	$(MAKE) -C /lib/modules/$(KVER)/build M="$(PWD)" $@
+	$(MAKE) -C "${KSRC}" M="$(PWD)" $@
 	strip --strip-unneeded lime.ko
 
 modules_install:    modules
